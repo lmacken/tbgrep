@@ -34,7 +34,7 @@ setup(name='tbgrep',
       ],
       entry_points={
           'console_scripts' : [
-              'tbgrep = tbgrep.commands:tbgrep',
+              'tbgrep = tbgrep.commands:main',
           ],
       },
      )

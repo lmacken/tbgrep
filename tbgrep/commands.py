@@ -23,7 +23,7 @@ import tbgrep
 
 __doc__ = tbgrep.__doc__
 
-def tbgrep():
+def main():
     stats = False
     if '--stats' in sys.argv:
         stats = True
