@@ -19,6 +19,10 @@
 from collections import defaultdict
 from operator import itemgetter
 
+_file = open('/'.join(__file__.split('/')[:-1]) + '/README.rst')
+__doc__ = _file.read()
+_file.close()
+
 tb_head = 'Traceback (most recent call last):'
 
 class TracebackGrep(object):

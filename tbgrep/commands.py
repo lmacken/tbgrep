@@ -19,7 +19,9 @@
 import sys
 import fileinput
 
-from tbgrep import TracebackGrep
+import tbgrep
+
+__doc__ = tbgrep.__doc__
 
 def tbgrep():
     stats = False
@@ -27,7 +29,7 @@ def tbgrep():
         stats = True
         sys.argv.remove('--stats')
 
-    extractor = TracebackGrep(stats=stats)
+    extractor = tbgrep.TracebackGrep(stats=stats)
 
     for line in fileinput.input():
         tb = extractor.process(line)
