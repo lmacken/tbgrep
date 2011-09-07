@@ -7,30 +7,36 @@ A module & command-line tool for extracting Python tracebacks from text.
 Extracting tracebacks from bunch of files
 -----------------------------------------
 
-|    $ tbgrep file1 file2 file3
+::
+
+    $ tbgrep file1 file2 file3
 
 Grepping for tracebacks in a pipeline
 -------------------------------------
 
-|    $ tail -f logfile | tbgrep
+::
+
+    $ tail -f logfile | tbgrep
 
 Displaying all unique tracebacks ordered by the number of occurrences
 ---------------------------------------------------------------------
 
-|    $ tbgrep --stats logfile
-|    [...]
-|
-|    == 99 occurences ==================================================
-|
-|    Traceback (most recent call last):
-|     File "/usr/lib/python2.4/site-packages/bodhi/admin.py", line 209, in _masher_request
-|       req_params=kwargs)
-|     File "/usr/lib/python2.4/site-packages/fedora/client/proxyclient.py", line 285, in send_request
-|       raise AuthError(_('Unable to log into server.  Invalid'
-|    AuthError: Unable to log into server.  Invalid authentication tokens.  Send new username and password
-|
-|    ==================================================================
-|    733 unique tracebacks extracted
+::
+
+    $ tbgrep --stats logfile
+    [...]
+
+    == 99 occurences ==================================================
+
+    Traceback (most recent call last):
+     File "/usr/lib/python2.4/site-packages/bodhi/admin.py", line 209, in _masher_request
+       req_params=kwargs)
+     File "/usr/lib/python2.4/site-packages/fedora/client/proxyclient.py", line 285, in send_request
+       raise AuthError(_('Unable to log into server.  Invalid'
+    AuthError: Unable to log into server.  Invalid authentication tokens.  Send new username and password
+
+    ==================================================================
+    733 unique tracebacks extracted
 
 Using the Python API
 --------------------
