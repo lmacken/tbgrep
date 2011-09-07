@@ -1,0 +1,6 @@
+*.egg*
+*.pyc
+*.swp
+*.pdf
+build
+dist
