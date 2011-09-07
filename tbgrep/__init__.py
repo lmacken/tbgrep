@@ -16,9 +16,6 @@
 #
 # Copyright (C) 2011 Luke Macken <lmacken@redhat.com>
 
-import sys
-import fileinput
-
 from collections import defaultdict
 from operator import itemgetter
 
@@ -65,19 +62,3 @@ class TracebackGrep(object):
             print tb
         print '=' * 80
         print "%d unique tracebacks extracted" % len(stats)
-
-
-if __name__ == '__main__':
-    stats = False
-    if '--stats' in sys.argv:
-        stats = True
-        sys.argv.remove('--stats')
-
-    extractor = TracebackGrep(stats=stats)
-
-    for line in fileinput.input():
-        tb = extractor.process(line)
-        if not stats and tb:
-            print tb
-    if stats:
-        extractor.print_stats()

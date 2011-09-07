@@ -7,17 +7,17 @@ A module & command-line tool for extracting Python tracebacks from text.
 Extracting tracebacks from bunch of files
 -----------------------------------------
 
-|    $ python tbgrep.py file1 file2 file3
+|    $ tbgrep file1 file2 file3
 
 Grepping for tracebacks in a pipeline
 -------------------------------------
 
-|    $ tail -f logfile | python tbgrep.py
+|    $ tail -f logfile | tbgrep
 
 Displaying all unique tracebacks ordered by the number of occurrences
 ---------------------------------------------------------------------
 
-|    $ python tbgrep.py --stats logfile
+|    $ tbgrep --stats logfile
 |    [...]
 |
 |    == 99 occurences ==================================================
