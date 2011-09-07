@@ -3,15 +3,15 @@
 A module & command-line tool for extracting Python tracebacks from text.
 
 
-##  Extracting tracebacks from bunch of files
+###  Extracting tracebacks from bunch of files
 
     $ python tbgrep.py file1 file2 file3
 
-## Grepping for tracebacks in a pipeline
+### Grepping for tracebacks in a pipeline
 
     $ tail -f logfile | python tbgrep.py
 
-## Displaying all unique tracebacks ordered by the number of occurrences
+### Displaying all unique tracebacks ordered by the number of occurrences
 
     $ python tbgrep.py --stats logfile
     [...]
@@ -28,7 +28,7 @@ A module & command-line tool for extracting Python tracebacks from text.
     ==================================================================
     733 unique tracebacks extracted
 
-## Using the Python API
+### Using the Python API
 
 Once instantiated, you pass each line to the `process` method, which will
 return either None, or a string of a traceback.
@@ -53,11 +53,10 @@ for line in file('logfile'):
 extractor.print_stats()
 ```
 
-## Supported Input Formats
+### Supported Input Formats
 
 tbgrep can extract tracebacks from logs of various formats. For example,
 CherryPy starts the traceback on a line with other details (like module,
-timestamp, etc), but the rest of the trace starts at the beginning of the
-line. Apache logs, on the other hand, will prefix each line of the
-traceback with this information. tbgrep is designed to handle both of
-these types of situations.
+timestamp, etc), but the rest of the trace starts at the beginning of the line.
+Apache logs, on the other hand, will prefix each line of the traceback with
+this information. tbgrep is designed to these kinds of situations
