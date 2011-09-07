@@ -56,9 +56,11 @@ class TracebackGrep(object):
         return sorted(self.tracebacks.items(), key=itemgetter(1))
 
     def print_stats(self):
+        header = lambda x: '== %s %s' % (x, '=' * (76 - len(x)))
         stats = self.get_stats()
         for tb, num in stats:
-            print ('== %d occurences ' + '=' * 50) % num
+            print header('%d occurence%s' % (num,
+                    (num == 1 and [''] or ['s'])[0]))
             print
             print tb
         print '=' * 80
