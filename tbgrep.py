@@ -56,7 +56,7 @@ class TracebackGrep(object):
         return sorted(self.tracebacks.items(), key=itemgetter(1))
 
     def print_stats(self):
-        stats = extractor.get_stats()
+        stats = self.get_stats()
         for tb, num in stats:
             print ('== %d occurences ' + '=' * 50) % num
             print
