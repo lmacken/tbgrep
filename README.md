@@ -1,6 +1,6 @@
 # Traceback Grep
 
-A module & command-line tool for extracting Python tracebacks text.
+A module & command-line tool for extracting Python tracebacks from text.
 
 
 ##  Extracting tracebacks from bunch of files
