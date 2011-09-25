@@ -36,3 +36,12 @@ def test_tbgrep():
                 found = True
                 assert tb == traceback, repr(tb)
         assert found, "Couldn't extract traceback from: " + repr(variation)
+
+def test_tbgrep_stats():
+    extractor = TracebackGrep(stats=True)
+    for variation in variations:
+        for line in variation.split('\n'):
+            extractor.process(line + '\n')
+    stats = extractor.get_stats()
+    assert len(stats) == 1, stats
+    assert stats[0][1] == 3, stats[0][1]
