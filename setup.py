@@ -33,6 +33,8 @@ setup(name='tbgrep',
       install_requires=[
           # -*- Extra requirements: -*-
       ],
+      test_suite='nose.collector',
+      tests_require=['nose'],
       entry_points={
           'console_scripts' : [
               'tbgrep = tbgrep.commands:main',
