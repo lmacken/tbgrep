@@ -36,11 +36,7 @@ class TracebackGrep(object):
     def process(self, line):
         if self.tb:
             if line:
-                if self.firstline:
-                    self.prefix = line[0] != ' '
-                    self.firstline = False
-                if self.prefix:
-                    line = line[self.index:]
+                line = line[self.index:]
                 self.tb += line
                 if line and line[0] != ' ':
                     tb = self.tb
@@ -51,7 +47,6 @@ class TracebackGrep(object):
         elif tb_head in line:
             self.index = line.index(tb_head)
             self.tb = line[self.index:]
-            self.firstline = True
 
     def get_stats(self):
         return sorted(self.tracebacks.items(), key=itemgetter(1))
