@@ -1,3 +1,6 @@
+import sys
+
+from StringIO import StringIO
 from tbgrep import TracebackGrep
 
 traceback = 'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nException\n'
@@ -45,3 +48,7 @@ def test_tbgrep_stats():
     stats = extractor.get_stats()
     assert len(stats) == 1, stats
     assert stats[0][1] == 3, stats[0][1]
+    sys.stdout = StringIO()
+    extractor.print_stats()
+    assert '1 unique traceback extracted' in sys.stdout.getvalue()
+    sys.stdout = sys.__stdout__
