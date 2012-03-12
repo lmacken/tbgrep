@@ -16,10 +16,12 @@
 #
 # Copyright (C) 2011 Luke Macken <lmacken@redhat.com>
 
+import os
+
 from collections import defaultdict
 from operator import itemgetter
 
-_file = open('/'.join(__file__.split('/')[:-1]) + '/README.rst')
+_file = open(os.path.join(os.path.dirname(__file__), "README.rst"))
 __doc__ = _file.read()
 _file.close()
 
