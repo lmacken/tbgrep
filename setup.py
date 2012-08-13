@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 import sys, os
+import multiprocessing
 
 version = '0.2.1'
 
