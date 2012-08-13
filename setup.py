@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import sys, os
 import multiprocessing
 
-version = '0.2.1'
+version = '0.2.2'
 
 f = open('tbgrep/README.rst')
 long_description = f.read()
