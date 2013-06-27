@@ -4,7 +4,7 @@ import multiprocessing
 
 version = '0.2.2'
 
-f = open('tbgrep/README.rst')
+f = open('README.rst')
 long_description = f.read()
 f.close()
 
