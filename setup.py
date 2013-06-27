@@ -1,6 +1,9 @@
 from setuptools import setup, find_packages
 import sys, os
-import multiprocessing
+try:
+    import multiprocessing
+except ImportError:
+    pass
 
 version = '0.2.2'
 
