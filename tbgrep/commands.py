@@ -33,7 +33,7 @@ def main():
     for line in fileinput.input():
         tb = extractor.process(line)
         if not stats and tb:
-            print tb
+            print(tb)
     if stats:
         extractor.print_stats()
 
