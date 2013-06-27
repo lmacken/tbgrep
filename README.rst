@@ -1,9 +1,9 @@
 Traceback Grep
 ==============
 
-.. image:: https://api.travis-ci.org/lmacken/tbgrep.png?branch=develop
+.. image:: https://api.travis-ci.org/lmacken/tbgrep.png?branch=master
    :target: http://travis-ci.org/lmacken/tbgrep
-.. image:: https://coveralls.io/repos/lmacken/tbgrep/badge.png?branch=develop
+.. image:: https://coveralls.io/repos/lmacken/tbgrep/badge.png?branch=master
    :target: https://coveralls.io/r/lmacken/tbgrep
 .. image:: https://pypip.in/v/tbgrep/badge.png
    :target: https://crate.io/packages/tbgrep
