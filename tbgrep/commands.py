@@ -21,7 +21,6 @@ import fileinput
 
 import tbgrep
 
-__doc__ = tbgrep.__doc__
 
 def main():
     stats = False
