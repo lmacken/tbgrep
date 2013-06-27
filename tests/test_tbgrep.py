@@ -1,6 +1,10 @@
 import sys
 
-from StringIO import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+
 from tbgrep import TracebackGrep
 
 traceback = 'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nException\n'

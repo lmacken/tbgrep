@@ -53,9 +53,9 @@ class TracebackGrep(object):
         pluralize = lambda val, name: val == 1 and name or name + 's'
         stats = self.get_stats()
         for tb, num in stats:
-            print header('%d %s' % (num, pluralize(num, 'occurence')))
-            print
-            print tb
-        print '=' * 80
+            print(header('%d %s' % (num, pluralize(num, 'occurence'))))
+            print('')
+            print(tb)
+        print('=' * 80)
         num = len(stats)
-        print "%d unique %s extracted" % (num, pluralize(num, 'traceback'))
+        print("%d unique %s extracted" % (num, pluralize(num, 'traceback')))
