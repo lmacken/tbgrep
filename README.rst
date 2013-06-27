@@ -1,6 +1,15 @@
 Traceback Grep
 ==============
 
+.. image:: https://api.travis-ci.org/lmacken/tbgrep.png?branch=develop
+   :target: http://travis-ci.org/lmacken/tbgrep
+.. image:: https://coveralls.io/repos/lmacken/tbgrep/badge.png?branch=develop
+   :target: https://coveralls.io/r/lmacken/tbgrep
+.. image:: https://pypip.in/v/tbgrep/badge.png
+   :target: https://crate.io/packages/tbgrep
+.. image:: https://pypip.in/d/tbgrep/badge.png
+   :target: https://crate.io/packages/tbgrep
+
 A module & command-line tool for extracting Python tracebacks from text.
 
 
