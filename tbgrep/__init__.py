@@ -19,11 +19,8 @@
 from collections import defaultdict
 from operator import itemgetter
 
-_file = open(os.path.join(os.path.dirname(__file__), "README.rst"))
-__doc__ = _file.read()
-_file.close()
-
 tb_head = 'Traceback (most recent call last):'
+
 
 class TracebackGrep(object):
     tb = index = None

@@ -1,1 +1,0 @@
-tbgrep/README.rst
