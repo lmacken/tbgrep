@@ -56,3 +56,16 @@ def test_tbgrep_stats():
     extractor.print_stats()
     assert '1 unique traceback extracted' in sys.stdout.getvalue()
     sys.stdout = sys.__stdout__
+
+def test_command():
+    from tbgrep.commands import main
+    import sys
+    orig_stdin = sys.stdin
+    for variation in variations:
+        stdin = StringIO()
+#        stdin.write(variation)
+        sys.stdin = stdin
+        sys.argv = ['tbgrep', '--stats']
+        main()
+        assert '1 unique traceback extracted' in sys.stdout.getvalue(), sys.stdout
+    sys.stdin = orig_stdin
