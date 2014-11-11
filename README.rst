@@ -69,6 +69,19 @@ supports generating statistics about all tracebacks in the file.
 >>>     extractor.process(line)
 >>> extractor.print_stats()
 
+There are also some functions that allow you to search for tracebacks in a more
+convenient way.
+
+>>> from tbgrep import (
+>>>     tracebacks_from_lines, tracebacks_from_file,
+>>>     last_traceback_from_file)
+>>> for tb in tracebacks_from_file(file('logfile')):
+>>>     print(tb)
+>>> for tb in tracebacks_from_file(file('logfile'), reverse=True):
+>>>     print(tb)
+>>> print(last_traceback_from_file(file('logfile')))
+
+
 Supported Input Formats
 -----------------------
 
