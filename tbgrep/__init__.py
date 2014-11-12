@@ -16,7 +16,7 @@
 #
 # Copyright (C) 2011-2013 Luke Macken <lmacken@redhat.com>
 
-from collections import defaultdict
+from collections import defaultdict, deque
 from operator import itemgetter
 
 tb_head = 'Traceback (most recent call last):'
@@ -59,3 +59,81 @@ class TracebackGrep(object):
         print('=' * 80)
         num = len(stats)
         print("%d unique %s extracted" % (num, pluralize(num, 'traceback')))
+
+
+def tracebacks_from_lines(lines_iter):
+    """Generator that yields tracebacks found in a lines iterator
+
+    The lines iterator can be:
+
+    - a file-like object
+    - a list (or deque) of lines.
+    - any other iterable sequence of strings
+    """
+
+    tbgrep = TracebackGrep()
+
+    for line in lines_iter:
+        tb = tbgrep.process(line)
+        if tb:
+            yield tb
+
+
+def tracebacks_from_file(fileobj, reverse=False):
+    """Generator that yields tracebacks found in a file object
+
+    With reverse=True, searches backwards from the end of the file.
+    """
+
+    if reverse:
+        lines = deque()
+
+        for line in BackwardsReader(fileobj):
+            lines.appendleft(line)
+            if tb_head in line:
+                yield next(tracebacks_from_lines(lines))
+                lines.clear()
+    else:
+        for traceback in tracebacks_from_lines(fileobj):
+            yield traceback
+
+
+def last_traceback_from_file(fileobj):
+    """Returns the last traceback found in a file object."""
+
+    for traceback in tracebacks_from_file(fileobj, reverse=True):
+        return traceback
+
+
+# From Raymond Hettinger at
+# http://code.activestate.com/recipes/439045-read-a-text-file-backwards-yet-another-implementat/
+def BackwardsReader(file, BLKSIZE = 4096):
+    """Read a file line by line, backwards"""
+
+    buf = ""
+
+    file.seek(0, 2)
+    lastchar = file.read(1)
+    trailing_newline = (lastchar == "\n")
+
+    while 1:
+        newline_pos = buf.rfind("\n")
+        pos = file.tell()
+        if newline_pos != -1:
+            # Found a newline
+            line = buf[newline_pos+1:]
+            buf = buf[:newline_pos]
+            if pos or newline_pos or trailing_newline:
+                line += "\n"
+            yield line
+        elif pos:
+            # Need to fill buffer
+            toread = min(BLKSIZE, pos)
+            file.seek(pos-toread, 0)
+            buf = file.read(toread) + buf
+            file.seek(pos-toread, 0)
+            if pos == toread:
+                buf = "\n" + buf
+        else:
+            # Start-of-file
+            return
