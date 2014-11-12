@@ -1,14 +1,13 @@
 language: python
 
 python:
-  - 2.5
   - 2.6
   - 2.7
   - 3.2
   - 3.3
 
 before_install:
-  - if [[ $TRAVIS_PYTHON_VERSION != '2.5' ]]; then pip install coverage coveralls --use-mirrors && export HAS_COVERALLS=1; fi
+  - pip install coverage coveralls
 
 install:
   - python setup.py install
@@ -17,4 +16,4 @@ script:
   - nosetests -q --with-coverage --cover-erase --cover-package=tbgrep
 
 after_success:
-  - if [[ $HAS_COVERALLS ]]; then coveralls; fi
+  - coveralls
