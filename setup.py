@@ -5,7 +5,7 @@ try:
 except ImportError:
     pass
 
-version = '0.2.3'
+version = '0.3.0'
 
 f = open('README.rst')
 long_description = f.read()
